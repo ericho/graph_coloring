@@ -22,13 +22,34 @@ def get_grafo():
 def get_grados(grafo):
     dict_grados = {}
     for row in range(len(grafo)):
-        dict_grados[getLetra(row)] = 0
+        dict_grados[getLetra(row)] = {"grado": 0}
         for col in range(len(grafo)):
             if grafo[row][col]:
-                    dict_grados[getLetra(row)] += 1
+                    dict_grados[getLetra(row)]["grado"] += 1
+    print(dict_grados)
+    for row in range(len(grafo)):
+        grado_error = 0
+        for col in range(len(grafo)):
+            if grafo[row][col]:
+                if dict_grados[getLetra(row)]["grado"] <= dict_grados[getLetra(col)]["grado"]:
+                    grado_error += 1
+        dict_grados[getLetra(row)]["grado_error"]=grado_error+dict_grados[getLetra(row)]["grado"]
     return dict_grados
+
+def get_colores():
+    no_colores = int(input("Ingrese el numero de colores para el grafo: "))
+    arr_colores = []
+    for x in range(no_colores):
+        color = input(f"Ingrese el color No {x+1}: ")
+        arr_colores.append(color)
+    return arr_colores
 
 grafo = get_grafo()
 print(grafo)
 dict_grados = get_grados(grafo)
 print(dict_grados)
+nodos_ordenados = sorted(dict_grados, key=lambda k: (dict_grados[k]["grado"], dict_grados[k]["grado_error"]))[::-1]
+print(dict_grados)
+print(nodos_ordenados)
+colores = get_colores()
+print(colores)
