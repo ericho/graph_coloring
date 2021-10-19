@@ -44,6 +44,25 @@ def get_colores():
         arr_colores.append(color)
     return arr_colores
 
+def asignar_colores(grafo, nodos_ordenados, colores):
+    dict_nodos_colores = {}
+    dict_nodos_colores[nodos_ordenados[0]]=colores[0]
+    curr_color = 1
+    print(nodos_ordenados[1:])
+    for nodo in nodos_ordenados[1:]:
+        index_nodo = getNum(nodo)
+        colores_disponibles = colores.copy()
+        for nodo_adyacente in range(len(grafo[index_nodo])):
+            if grafo[index_nodo][nodo_adyacente]:
+                ### Tratar de ir eliminando de las lista los colores de los nodos adyacentes si es que tienen
+                if getLetra(nodo_adyacente) in dict_nodos_colores:
+                    colores_disponibles.remove(dict_nodos_colores[getLetra(nodo_adyacente)])
+        if colores_disponibles!=[]:
+            dict_nodos_colores[nodo]=colores_disponibles[0]
+        else:
+            return "El grafo no se puede colorear con los colores proporcionados"
+    return dict_nodos_colores
+
 grafo = get_grafo()
 print(grafo)
 dict_grados = get_grados(grafo)
@@ -53,3 +72,5 @@ print(dict_grados)
 print(nodos_ordenados)
 colores = get_colores()
 print(colores)
+nodos_coloreados = asignar_colores(grafo, nodos_ordenados, colores)
+print(nodos_coloreados)
