@@ -1,0 +1,24 @@
+11 20 2
+A B
+A C
+B C
+B H
+B I
+C D
+C E
+C H
+C F
+D E
+E F
+E G
+F G
+F H
+F J
+G K
+H I
+H J
+I J
+J K
+blue
+red
+test6.png

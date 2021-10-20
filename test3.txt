@@ -1,0 +1,22 @@
+7 16 4
+A B
+A D
+A E
+A F
+A G
+B C
+B D
+B E
+B F
+C E
+C F
+D E
+D F
+D G
+E G
+F G
+red
+blue
+green
+yellow
+test3.png

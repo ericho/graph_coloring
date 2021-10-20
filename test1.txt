@@ -1,0 +1,8 @@
+4 4 2
+A B
+B C
+C D
+D A
+red
+blue
+test1.png
